@@ -1,8 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import { BrowserRouter } from 'react-router-dom';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import './assets/css/index.css';
+import App from './App';
+import registerServiceWorker from './assets/js/registerServiceWorker';
+import { ApolloProvider } from 'react-apollo';
+import client from './graphql/clientGraphql';
+
+ReactDOM.render((
+    <BrowserRouter>
+        <ApolloProvider client={client}>
+            <App />
+        </ApolloProvider>
+    </BrowserRouter>
+), document.getElementById('root'));
+
 registerServiceWorker();
